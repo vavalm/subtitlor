@@ -25,4 +25,26 @@ public class SubtitlesFile {
     public String getName() {
         return name;
     }
+
+    public ArrayList<String> getStartTimes(){
+        ArrayList<String> startTimes = new ArrayList<String>();
+
+        for (Subtitle sub :
+                subtitles) {
+            startTimes.add(sub.getStartTime());
+        }
+
+        return startTimes;
+    }
+
+    public ArrayList<String> getEndTimes(){
+        ArrayList<String> endTimes = new ArrayList<String>();
+
+        for (Subtitle sub :
+                subtitles) {
+            endTimes.add(sub.getEndTime());
+        }
+
+        return endTimes;
+    }
 }

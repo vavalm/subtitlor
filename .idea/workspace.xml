@@ -6,7 +6,23 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="55cee479-00e4-4cad-bf93-2e56ad5d569a" name="Default" comment="" />
+    <list default="true" id="55cee479-00e4-4cad-bf93-2e56ad5d569a" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/dao/dao.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/web_war_exploded/WEB-INF/classes/dao/DaoFactory.class" afterPath="$PROJECT_DIR$/out/artifacts/web_war_exploded/WEB-INF/classes/dao/DaoFactory.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/web_war_exploded/WEB-INF/classes/servlets/Accueil.class" afterPath="$PROJECT_DIR$/out/artifacts/web_war_exploded/WEB-INF/classes/servlets/Accueil.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/web_war_exploded/WEB-INF/classes/servlets/EditSubtitle.class" afterPath="$PROJECT_DIR$/out/artifacts/web_war_exploded/WEB-INF/classes/servlets/EditSubtitle.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/subtitlor-project/dao/DaoFactory.class" afterPath="$PROJECT_DIR$/out/production/subtitlor-project/dao/DaoFactory.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/subtitlor-project/servlets/Accueil.class" afterPath="$PROJECT_DIR$/out/production/subtitlor-project/servlets/Accueil.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/subtitlor-project/servlets/EditSubtitle.class" afterPath="$PROJECT_DIR$/out/production/subtitlor-project/servlets/EditSubtitle.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/beans/SubtitlesFile.java" afterPath="$PROJECT_DIR$/src/beans/SubtitlesFile.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dao/DaoFactory.java" afterPath="$PROJECT_DIR$/src/dao/DaoFactory.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dao/SubFilesDaoSql.java" afterPath="$PROJECT_DIR$/src/dao/SubFilesDaoSql.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/servlets/Accueil.java" afterPath="$PROJECT_DIR$/src/servlets/Accueil.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/servlets/EditSubtitle.java" afterPath="$PROJECT_DIR$/src/servlets/EditSubtitle.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/subtitlor-project.iml" afterPath="$PROJECT_DIR$/subtitlor-project.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/edit_subtitle.jsp" afterPath="$PROJECT_DIR$/web/WEB-INF/edit_subtitle.jsp" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -16,157 +32,69 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.4873311">
-      <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="accueil.jsp" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/web/WEB-INF/accueil.jsp">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="226">
-                  <caret line="22" column="52" lean-forward="false" selection-start-line="22" selection-start-column="46" selection-end-line="22" selection-end-column="52" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="edit_subtitle.jsp" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/web/WEB-INF/edit_subtitle.jsp">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="102">
-                  <caret line="6" column="23" lean-forward="false" selection-start-line="6" selection-start-column="23" selection-end-line="6" selection-end-column="23" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="Accueil.java" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/servlets/Accueil.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="564">
-                  <caret line="65" column="29" lean-forward="true" selection-start-line="65" selection-start-column="29" selection-end-line="65" selection-end-column="29" />
-                  <folding>
-                    <element signature="e#1796#1804#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="EditSubtitle.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/servlets/EditSubtitle.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-291">
-                  <caret line="22" column="37" lean-forward="false" selection-start-line="22" selection-start-column="37" selection-end-line="22" selection-end-column="37" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="Subtitle.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/beans/Subtitle.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="481">
-                  <caret line="46" column="37" lean-forward="false" selection-start-line="46" selection-start-column="18" selection-end-line="46" selection-end-column="37" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="SubtitlesHandler.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/utilities/SubtitlesHandler.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="162">
-                  <caret line="40" column="13" lean-forward="true" selection-start-line="40" selection-start-column="13" selection-end-line="40" selection-end-column="13" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                    <element signature="e#954#962#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="PropertiesPerso.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/utilities/PropertiesPerso.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="102">
-                  <caret line="6" column="47" lean-forward="false" selection-start-line="6" selection-start-column="47" selection-end-line="6" selection-end-column="47" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="UploadManager.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/utilities/UploadManager.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="317">
-                  <caret line="46" column="30" lean-forward="false" selection-start-line="46" selection-start-column="30" selection-end-line="46" selection-end-column="30" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="DaoFactory.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/dao/DaoFactory.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="90">
-                  <caret line="6" column="27" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="SubFilesDaoSql.java" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/dao/SubFilesDaoSql.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="531">
-                  <caret line="212" column="57" lean-forward="false" selection-start-line="212" selection-start-column="57" selection-end-line="212" selection-end-column="57" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                    <element signature="docComment;method#saveUploadSubFile#0;class#SubFilesDaoSql#0" expanded="false" />
-                    <element signature="docComment;method#getSubtitlesFile#0;class#SubFilesDaoSql#0" expanded="false" />
-                    <element signature="method#getSubtitlesFile#0;class#SubFilesDaoSql#0" expanded="false" />
-                    <element signature="docComment;method#createTable#0;class#SubFilesDaoSql#0" expanded="false" />
-                    <element signature="method#createTable#0;class#SubFilesDaoSql#0" expanded="false" />
-                    <element signature="method#ClearSpecialChar#0;class#SubFilesDaoSql#0" expanded="false" />
-                    <element signature="docComment;method#SaveSubFilesInDB#0;class#SubFilesDaoSql#0" expanded="false" />
-                    <element signature="method#SaveSubFilesInDB#0;class#SubFilesDaoSql#0" expanded="false" />
-                    <element signature="docComment;method#UpdateTranslatedSubtitles#0;class#SubFilesDaoSql#0" expanded="false" />
-                    <element signature="docComment;method#getFilesInDB#0;class#SubFilesDaoSql#0" expanded="false" />
-                    <marker date="1504644252391" expanded="true" signature="2022:2035" ph="SELECT * FRO... " />
-                    <marker date="1504644252391" expanded="true" signature="2022:2036" ph="SELECT * FRO... missingValue" />
-                    <marker date="1504644252391" expanded="true" signature="3562:3573" ph="SELECT * FRO... " />
-                    <marker date="1504644252391" expanded="true" signature="3562:3574" ph="SELECT * FRO... missingValue" />
-                    <marker date="1504644252391" expanded="true" signature="3647:3673" ph="CREATE TABLE... IF" />
-                    <marker date="1504644252391" expanded="true" signature="3647:3674" ph="CREATE TABLE... IF" />
-                    <marker date="1504644252391" expanded="true" signature="3647:4458" ph="CREATE TABLE... IF" />
-                    <marker date="1504644252391" expanded="true" signature="5886:6025" ph="INSERT INTO missingValue... " />
-                    <marker date="1504644252391" expanded="true" signature="7723:7774" ph="UPDATE missi... " />
-                    <marker date="1504644252391" expanded="true" signature="7723:7794" ph="UPDATE missi... " />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="SubFilesDao.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/dao/SubFilesDao.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="459">
-                  <caret line="32" column="32" lean-forward="true" selection-start-line="32" selection-start-column="32" selection-end-line="32" selection-end-column="32" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="SubtitlesHandler.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/utilities/SubtitlesHandler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="40" column="13" lean-forward="false" selection-start-line="40" selection-start-column="13" selection-end-line="40" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UploadManager.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/utilities/UploadManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="449">
+              <caret line="46" column="30" lean-forward="false" selection-start-line="46" selection-start-column="30" selection-end-line="46" selection-end-column="30" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EditSubtitle.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/servlets/EditSubtitle.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="55" column="14" lean-forward="false" selection-start-line="55" selection-start-column="14" selection-end-line="55" selection-end-column="14" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SubFilesDaoSql.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/dao/SubFilesDaoSql.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="783">
+              <caret line="258" column="0" lean-forward="false" selection-start-line="258" selection-start-column="2" selection-end-line="280" selection-end-column="11" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="docComment;method#saveUploadSubFile#0;class#SubFilesDaoSql#0" expanded="false" />
+                <element signature="docComment;method#getSubtitlesFile#0;class#SubFilesDaoSql#0" expanded="false" />
+                <element signature="method#getSubtitlesFile#0;class#SubFilesDaoSql#0" expanded="false" />
+                <element signature="docComment;method#createTable#0;class#SubFilesDaoSql#0" expanded="false" />
+                <element signature="method#ClearSpecialChar#0;class#SubFilesDaoSql#0" expanded="false" />
+                <element signature="docComment;method#SaveSubFilesInDB#0;class#SubFilesDaoSql#0" expanded="false" />
+                <element signature="method#SaveSubFilesInDB#0;class#SubFilesDaoSql#0" expanded="false" />
+                <element signature="docComment;method#UpdateTranslatedSubtitles#0;class#SubFilesDaoSql#0" expanded="false" />
+                <element signature="docComment;method#getFilesInDB#0;class#SubFilesDaoSql#0" expanded="false" />
+                <marker date="1505422175788" expanded="true" signature="2022:2036" ph="SELECT * FRO... missingValue" />
+                <marker date="1505422175788" expanded="true" signature="3647:4458" ph="CREATE TABLE... IF" />
+                <marker date="1505422175788" expanded="true" signature="5886:6025" ph="INSERT INTO missingValue... " />
+                <marker date="1505422175788" expanded="true" signature="7723:7795" ph="UPDATE missi... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -181,8 +109,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>setNa</find>
-      <find>SaveSubFilesInDB</find>
       <find>getTim</find>
       <find>getTimes</find>
       <find>strea</find>
@@ -211,12 +137,17 @@
       <find>UTF-</find>
       <find>update</find>
       <find>Update</find>
+      <find>create</find>
+      <find>updatetran</find>
     </findStrings>
     <replaceStrings>
       <replace>SubtitlesFile</replace>
       <replace>SubFormConstants</replace>
       <replace>SUBFILE_FIELD_NAME</replace>
     </replaceStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GradleLocalSettings">
     <option name="externalProjectsViewState">
@@ -254,22 +185,23 @@
         <option value="$PROJECT_DIR$/src/dao/UploadOnSql.java" />
         <option value="$PROJECT_DIR$/src/dao/UploadSubFilesDaoSql.java" />
         <option value="$PROJECT_DIR$/src/dao/UploadSubFilesDao.java" />
-        <option value="$PROJECT_DIR$/src/beans/SubtitlesFile.java" />
         <option value="$PROJECT_DIR$/src/beans/Subtitle.java" />
         <option value="$PROJECT_DIR$/src/Properties.java" />
         <option value="$PROJECT_DIR$/web/WEB-INF/accueil.jsp" />
         <option value="$PROJECT_DIR$/src/utilities/UploadManager.java" />
-        <option value="$PROJECT_DIR$/src/dao/DaoFactory.java" />
-        <option value="$PROJECT_DIR$/web/WEB-INF/edit_subtitle.jsp" />
         <option value="$PROJECT_DIR$/src/utilities/PropertiesPerso.java" />
         <option value="$PROJECT_DIR$/src/Test.java" />
-        <option value="$PROJECT_DIR$/src/servlets/EditSubtitle.java" />
         <option value="$PROJECT_DIR$/web/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/src/utilities/SubtitlesHandler.java" />
         <option value="$PROJECT_DIR$/src/dao/SubFilesDao.java" />
-        <option value="$PROJECT_DIR$/src/servlets/Accueil.java" />
         <option value="$PROJECT_DIR$/src/dao/SubFilesDaoDisk.java" />
+        <option value="$PROJECT_DIR$/src/dao/dao.properties" />
+        <option value="$PROJECT_DIR$/src/dao/DaoFactory.java" />
+        <option value="$PROJECT_DIR$/src/beans/SubtitlesFile.java" />
+        <option value="$PROJECT_DIR$/src/servlets/EditSubtitle.java" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/edit_subtitle.jsp" />
         <option value="$PROJECT_DIR$/src/dao/SubFilesDaoSql.java" />
+        <option value="$PROJECT_DIR$/src/servlets/Accueil.java" />
       </list>
     </option>
   </component>
@@ -278,6 +210,13 @@
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
@@ -317,9 +256,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="192" />
-    <option name="width" value="1091" />
-    <option name="height" value="735" />
+    <option name="width" value="1920" />
+    <option name="height" value="1080" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -336,63 +274,44 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="subtitlor-project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="subtitlor-project" type="462c0819:PsiDirectoryNode" />
+              <item name="subtitlor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="subtitlor" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="subtitlor-project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="subtitlor-project" type="462c0819:PsiDirectoryNode" />
+              <item name="subtitlor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="subtitlor" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="subtitlor-project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="subtitlor-project" type="462c0819:PsiDirectoryNode" />
+              <item name="subtitlor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="subtitlor" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="beans" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="subtitlor-project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="subtitlor-project" type="462c0819:PsiDirectoryNode" />
+              <item name="subtitlor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="subtitlor" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="dao" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="subtitlor-project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="subtitlor-project" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Exceptions" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="subtitlor-project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="subtitlor-project" type="462c0819:PsiDirectoryNode" />
+              <item name="subtitlor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="subtitlor" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="servlets" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="subtitlor-project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="subtitlor-project" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="utilities" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="subtitlor-project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="subtitlor-project" type="462c0819:PsiDirectoryNode" />
+              <item name="subtitlor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="subtitlor" type="462c0819:PsiDirectoryNode" />
               <item name="web" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="subtitlor-project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="subtitlor-project" type="462c0819:PsiDirectoryNode" />
-              <item name="web" type="462c0819:PsiDirectoryNode" />
-              <item name="subfiles" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="subtitlor-project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="subtitlor-project" type="462c0819:PsiDirectoryNode" />
+              <item name="subtitlor" type="b2602c69:ProjectViewProjectNode" />
+              <item name="subtitlor" type="462c0819:PsiDirectoryNode" />
               <item name="web" type="462c0819:PsiDirectoryNode" />
               <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
             </path>
@@ -400,18 +319,20 @@
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
       <pane id="PackagesPane" />
+      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../lib/mysql-connector-java-5.1.43-bin.jar!/" />
-    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Global Libraries" />
     <property name="project.structure.proportion" value="0.1590909" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -441,7 +362,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Tomcat Server.Tomcat 7.0.77">
+  <component name="RunManager" selected="Tomcat Server.Tomcat 8">
     <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" value="Test" />
@@ -456,7 +377,7 @@
       <module name="subtitlor-project" />
       <envs />
     </configuration>
-    <configuration name="Tomcat 7.0.77" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 7.0.77" ALTERNATIVE_JRE_ENABLED="false">
+    <configuration name="Tomcat 8" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 7.0.77" ALTERNATIVE_JRE_ENABLED="false">
       <deployment>
         <artifact name="web:war exploded">
           <settings>
@@ -609,7 +530,7 @@
       <listeners />
     </configuration>
     <list size="2">
-      <item index="0" class="java.lang.String" itemvalue="Tomcat Server.Tomcat 7.0.77" />
+      <item index="0" class="java.lang.String" itemvalue="Tomcat Server.Tomcat 8" />
       <item index="1" class="java.lang.String" itemvalue="Application.Test" />
     </list>
     <recent_temporary>
@@ -635,14 +556,27 @@
       <workItem from="1502919549839" duration="64821000" />
       <workItem from="1503825724907" duration="23287000" />
       <workItem from="1504204906092" duration="20604000" />
+      <workItem from="1505072294003" duration="2708000" />
+      <workItem from="1505155856402" duration="707000" />
+      <workItem from="1505393671593" duration="102000" />
+      <workItem from="1505418977977" duration="3909000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="161018000" />
+    <option name="totallyTimeSpent" value="168444000" />
+  </component>
+  <component name="TodoView" selected-index="4">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="0" y="0" width="1920" height="1080" extended-state="6" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
@@ -655,16 +589,16 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39979655" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32953367" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32960325" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40095088" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2601036" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21041666" sideWeight="0.5" order="6" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13177083" sideWeight="0.5" order="6" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -714,9 +648,21 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Réparation du module de modification en base de données.&#10;Implémentation (en commentaires actuellement) d'un pool de connection." />
+    <option name="LAST_COMMIT_MESSAGE" value="Réparation du module de modification en base de données.&#10;Implémentation (en commentaires actuellement) d'un pool de connection." />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="28" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/servlets/EditSubtitle.java</url>
+          <line>54</line>
+          <properties />
+          <option name="timeStamp" value="28" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="29" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -725,7 +671,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/web/index.jsp" />
     <entry file="file://$PROJECT_DIR$/web/subfiles/password_presentation.srt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -737,55 +682,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="526">
           <caret line="71" column="1" lean-forward="false" selection-start-line="71" selection-start-column="1" selection-end-line="71" selection-end-column="1" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#1030#1038#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Apache Software Foundation/Tomcat 7.0/lib/servlet-api.jar!/javax/servlet/GenericServlet.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="33" column="26" lean-forward="false" selection-start-line="33" selection-start-column="26" selection-end-line="33" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://C:/Program Files/Apache Software Foundation/Tomcat 7.0/lib/servlet-api.jar!/javax/servlet/GenericServlet.class" />
     <entry file="file://$PROJECT_DIR$/src/Exceptions/UploadSubtitlesException.java" />
-    <entry file="jar://C:/Program Files/Apache Software Foundation/Tomcat 7.0/lib/servlet-api.jar!/javax/servlet/http/HttpServletRequest.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="498">
-          <caret line="79" column="12" lean-forward="false" selection-start-line="79" selection-start-column="12" selection-end-line="79" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://C:/Program Files/Apache Software Foundation/Tomcat 7.0/lib/servlet-api.jar!/javax/servlet/http/HttpServletRequest.class" />
     <entry file="file://$PROJECT_DIR$/src/servlets/MultipartConfig.java" />
     <entry file="file://$PROJECT_DIR$/src/Constants.java" />
-    <entry file="jar://C:/Program Files/Apache Software Foundation/Tomcat 7.0/lib/servlet-api.jar!/javax/servlet/http/HttpServlet.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="467">
-          <caret line="281" column="0" lean-forward="false" selection-start-line="281" selection-start-column="0" selection-end-line="281" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/lang/Exception.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="64" column="11" lean-forward="false" selection-start-line="64" selection-start-column="11" selection-end-line="64" selection-end-column="11" />
-          <folding>
-            <element signature="e#1663#1664#0" expanded="false" />
-            <element signature="e#1693#1694#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/../lib/jstl-1.2.jar!/javax/servlet/jsp/jstl/core/LoopTagStatus.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="12" column="8" lean-forward="false" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://C:/Program Files/Apache Software Foundation/Tomcat 7.0/lib/servlet-api.jar!/javax/servlet/http/HttpServlet.class" />
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/lang/Exception.java" />
+    <entry file="jar://$PROJECT_DIR$/../lib/jstl-1.2.jar!/javax/servlet/jsp/jstl/core/LoopTagStatus.class" />
     <entry file="file://$PROJECT_DIR$/out/artifacts/web_war_exploded/WEB-INF/edit_subtitle.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
@@ -808,21 +715,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/util/ArrayList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="427" column="13" lean-forward="false" selection-start-line="427" selection-start-column="13" selection-end-line="427" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Apache Software Foundation/Tomcat 7.0/lib/servlet-api.jar!/javax/servlet/http/HttpServletResponse.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="72" column="31" lean-forward="true" selection-start-line="72" selection-start-column="31" selection-end-line="72" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/util/ArrayList.java" />
+    <entry file="jar://C:/Program Files/Apache Software Foundation/Tomcat 7.0/lib/servlet-api.jar!/javax/servlet/http/HttpServletResponse.class" />
     <entry file="file://$PROJECT_DIR$/web/WEB-INF/index.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -831,21 +725,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/io/File.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="281" column="0" lean-forward="true" selection-start-line="281" selection-start-column="0" selection-end-line="281" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Apache Software Foundation/Tomcat 7.0/lib/servlet-api.jar!/javax/servlet/http/Part.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="16" column="16" lean-forward="true" selection-start-line="16" selection-start-column="16" selection-end-line="16" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/io/File.java" />
+    <entry file="jar://C:/Program Files/Apache Software Foundation/Tomcat 7.0/lib/servlet-api.jar!/javax/servlet/http/Part.class" />
     <entry file="file://$PROJECT_DIR$/subtitlor-project.iml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -853,40 +734,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/lang/ClassLoader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="762" column="0" lean-forward="false" selection-start-line="762" selection-start-column="0" selection-end-line="762" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/lang/ClassLoader.java" />
     <entry file="file://$PROJECT_DIR$/src/constants/UploadFormConstants.java" />
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/io/FileInputStream.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="137" column="0" lean-forward="false" selection-start-line="137" selection-start-column="0" selection-end-line="137" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/lang/System.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="109" column="36" lean-forward="false" selection-start-line="109" selection-start-column="36" selection-end-line="109" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/io/FileInputStream.java" />
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/lang/System.java" />
     <entry file="file://$PROJECT_DIR$/src/constants/SubFormConstants.java" />
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/lang/NullPointerException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="498">
-          <caret line="68" column="43" lean-forward="true" selection-start-line="68" selection-start-column="43" selection-end-line="68" selection-end-column="43" />
-          <folding>
-            <element signature="e#1640#1641#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/lang/NullPointerException.java" />
     <entry file="file://$PROJECT_DIR$/src/Exceptions/DaoException.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -905,75 +758,18 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="58" lean-forward="false" selection-start-line="4" selection-start-column="58" selection-end-line="4" selection-end-column="58" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/javax/tools/FileObject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1020">
-          <caret line="50" column="17" lean-forward="false" selection-start-line="50" selection-start-column="17" selection-end-line="50" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/lang/String.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="633" column="19" lean-forward="false" selection-start-line="633" selection-start-column="19" selection-end-line="633" selection-end-column="19" />
-          <folding>
-            <element signature="e#23072#23073#0" expanded="false" />
-            <element signature="e#23112#23113#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/sql/DriverManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="235" column="29" lean-forward="false" selection-start-line="235" selection-start-column="29" selection-end-line="235" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/sql/Statement.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="42" column="17" lean-forward="false" selection-start-line="42" selection-start-column="17" selection-end-line="42" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/sql/PreparedStatement.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="60" column="17" lean-forward="false" selection-start-line="60" selection-start-column="17" selection-end-line="60" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/accueil.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="22" column="52" lean-forward="false" selection-start-line="22" selection-start-column="46" selection-end-line="22" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/beans/Subtitle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="481">
-          <caret line="46" column="37" lean-forward="false" selection-start-line="46" selection-start-column="18" selection-end-line="46" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/javax/tools/FileObject.java" />
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/lang/String.java" />
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/sql/DriverManager.java" />
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/sql/Statement.java" />
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/sql/PreparedStatement.java" />
     <entry file="file://$PROJECT_DIR$/src/beans/TypeOfLineSubFile.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="18" column="11" lean-forward="false" selection-start-line="18" selection-start-column="11" selection-end-line="18" selection-end-column="11" />
-          <folding>
-            <element signature="e#512#513#0" expanded="false" />
-            <element signature="e#539#540#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -985,88 +781,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/utilities/UploadManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="317">
-          <caret line="46" column="30" lean-forward="false" selection-start-line="46" selection-start-column="30" selection-end-line="46" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utilities/PropertiesPerso.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="47" lean-forward="false" selection-start-line="6" selection-start-column="47" selection-end-line="6" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/io/DataInputStream.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1625">
-          <caret line="562" column="24" lean-forward="false" selection-start-line="562" selection-start-column="24" selection-end-line="562" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/edit_subtitle.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="23" lean-forward="false" selection-start-line="6" selection-start-column="23" selection-end-line="6" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utilities/SubtitlesHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="40" column="13" lean-forward="true" selection-start-line="40" selection-start-column="13" selection-end-line="40" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#954#962#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/dao/DaoFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="27" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/beans/SubtitlesFile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="11" lean-forward="false" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="11" />
-          <folding>
-            <element signature="e#185#186#0" expanded="false" />
-            <element signature="e#218#219#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/servlets/EditSubtitle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-291">
-          <caret line="22" column="37" lean-forward="false" selection-start-line="22" selection-start-column="37" selection-end-line="22" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/io/DataInputStream.java" />
     <entry file="file://$PROJECT_DIR$/src/dao/SubFilesDaoDisk.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="478">
@@ -1075,50 +790,145 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/servlets/Accueil.java">
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/accueil.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="564">
-          <caret line="65" column="29" lean-forward="true" selection-start-line="65" selection-start-column="29" selection-end-line="65" selection-end-column="29" />
+        <state relative-caret-position="0">
+          <caret line="22" column="52" lean-forward="false" selection-start-line="22" selection-start-column="46" selection-end-line="22" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dao/dao.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" column="19" lean-forward="false" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/beans/SubtitlesFile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="89">
+          <caret line="28" column="42" lean-forward="false" selection-start-line="28" selection-start-column="42" selection-end-line="28" selection-end-column="42" />
           <folding>
-            <element signature="e#1796#1804#0" expanded="true" />
+            <element signature="e#635#643#0" expanded="true" />
+            <element signature="e#892#900#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/edit_subtitle.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="21" column="101" lean-forward="false" selection-start-line="21" selection-start-column="101" selection-end-line="21" selection-end-column="101" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dao/DaoFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="773">
+          <caret line="62" column="78" lean-forward="false" selection-start-line="62" selection-start-column="78" selection-end-line="62" selection-end-column="78" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/dao/SubFilesDao.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="32" column="32" lean-forward="true" selection-start-line="32" selection-start-column="32" selection-end-line="32" selection-end-column="32" />
+        <state relative-caret-position="449">
+          <caret line="32" column="32" lean-forward="false" selection-start-line="32" selection-start-column="32" selection-end-line="32" selection-end-column="32" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utilities/PropertiesPerso.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="6" column="47" lean-forward="false" selection-start-line="6" selection-start-column="47" selection-end-line="6" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utilities/SubtitlesHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="40" column="13" lean-forward="false" selection-start-line="40" selection-start-column="13" selection-end-line="40" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utilities/UploadManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="449">
+          <caret line="46" column="30" lean-forward="false" selection-start-line="46" selection-start-column="30" selection-end-line="46" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/servlets/Accueil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <folding>
+            <element signature="e#1883#1891#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/beans/Subtitle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding>
+            <element signature="e#883#884#0" expanded="true" />
+            <element signature="e#920#921#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/dao/SubFilesDaoSql.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="531">
-          <caret line="212" column="57" lean-forward="false" selection-start-line="212" selection-start-column="57" selection-end-line="212" selection-end-column="57" />
+        <state relative-caret-position="783">
+          <caret line="258" column="0" lean-forward="false" selection-start-line="258" selection-start-column="2" selection-end-line="280" selection-end-column="11" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="docComment;method#saveUploadSubFile#0;class#SubFilesDaoSql#0" expanded="false" />
             <element signature="docComment;method#getSubtitlesFile#0;class#SubFilesDaoSql#0" expanded="false" />
             <element signature="method#getSubtitlesFile#0;class#SubFilesDaoSql#0" expanded="false" />
             <element signature="docComment;method#createTable#0;class#SubFilesDaoSql#0" expanded="false" />
-            <element signature="method#createTable#0;class#SubFilesDaoSql#0" expanded="false" />
             <element signature="method#ClearSpecialChar#0;class#SubFilesDaoSql#0" expanded="false" />
             <element signature="docComment;method#SaveSubFilesInDB#0;class#SubFilesDaoSql#0" expanded="false" />
             <element signature="method#SaveSubFilesInDB#0;class#SubFilesDaoSql#0" expanded="false" />
             <element signature="docComment;method#UpdateTranslatedSubtitles#0;class#SubFilesDaoSql#0" expanded="false" />
             <element signature="docComment;method#getFilesInDB#0;class#SubFilesDaoSql#0" expanded="false" />
-            <marker date="1504644252391" expanded="true" signature="2022:2035" ph="SELECT * FRO... " />
-            <marker date="1504644252391" expanded="true" signature="2022:2036" ph="SELECT * FRO... missingValue" />
-            <marker date="1504644252391" expanded="true" signature="3562:3573" ph="SELECT * FRO... " />
-            <marker date="1504644252391" expanded="true" signature="3562:3574" ph="SELECT * FRO... missingValue" />
-            <marker date="1504644252391" expanded="true" signature="3647:3673" ph="CREATE TABLE... IF" />
-            <marker date="1504644252391" expanded="true" signature="3647:3674" ph="CREATE TABLE... IF" />
-            <marker date="1504644252391" expanded="true" signature="3647:4458" ph="CREATE TABLE... IF" />
-            <marker date="1504644252391" expanded="true" signature="5886:6025" ph="INSERT INTO missingValue... " />
-            <marker date="1504644252391" expanded="true" signature="7723:7774" ph="UPDATE missi... " />
-            <marker date="1504644252391" expanded="true" signature="7723:7794" ph="UPDATE missi... " />
+            <marker date="1505422175788" expanded="true" signature="2022:2036" ph="SELECT * FRO... missingValue" />
+            <marker date="1505422175788" expanded="true" signature="3647:4458" ph="CREATE TABLE... IF" />
+            <marker date="1505422175788" expanded="true" signature="5886:6025" ph="INSERT INTO missingValue... " />
+            <marker date="1505422175788" expanded="true" signature="7723:7795" ph="UPDATE missi... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/servlets/EditSubtitle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="55" column="14" lean-forward="false" selection-start-line="55" selection-start-column="14" selection-end-line="55" selection-end-column="14" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1154,7 +964,7 @@
       </state>
       <state key="GlobalLibrariesConfigurable.UI">
         <settings>
-          <last-edited>dom4jrrrrr</last-edited>
+          <last-edited>tomcat 8.5</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -1183,6 +993,7 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>

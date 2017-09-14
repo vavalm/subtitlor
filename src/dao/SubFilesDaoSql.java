@@ -192,7 +192,7 @@ public class SubFilesDaoSql implements SubFilesDao {
      * @param subtitles : Les sous-titres contenants le texte traduit à enregistrer
      */
     public void UpdateTranslatedSubtitles(String tableName, ArrayList<Subtitle> subtitles) {
-        String req = "UPDATE " + tableName + "SET `translated_subtitle`=? WHERE `subtitle`= ?";
+        String req = "UPDATE " + tableName + " SET `translated_subtitle`=? WHERE `subtitle`= ?";
         PreparedStatement preparedStatement = null;
         Connection connection = null;
 

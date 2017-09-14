@@ -20,10 +20,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 @WebServlet(urlPatterns = "/home")
-@MultipartConfig( location = "C:\\tmp", maxFileSize = 10*1024*1024, maxRequestSize = 5*10*1024*1024, fileSizeThreshold = 1024*1024)
+@MultipartConfig( location = "/tmp", maxFileSize = 10*1024*1024, maxRequestSize = 5*10*1024*1024, fileSizeThreshold = 1024*1024)
+
 public class Accueil extends HttpServlet {
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("UTF-8");
+
         ServletContext context = getServletContext();
         DaoFactory daoFactory = DaoFactory.getInstance();
         SubFilesDao subFilesDao = new SubFilesDaoSql(daoFactory);
@@ -37,6 +41,8 @@ public class Accueil extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("UTF-8");
+
         int i = 0;
         String fieldName = "line";
         String fieldContent = "";

@@ -19,6 +19,7 @@
         <c:forEach items="${ subtitles }" var="sub" varStatus="status">
             <tr>
                 <td style="text-align:right;"><c:out value="${ sub.getText() }"/></td>
+                <td style="text-align:right;"><c:out value="${ sub.getStartTime() } --> ${ sub.getEndTime() }"/></td>
                 <td>
                         <input type="text" name="line${ status.index }" id="line${ status.index }" size="35"
                                value="${sub.getTranslatedText()}"/>

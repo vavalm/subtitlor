@@ -20,7 +20,7 @@ import javax.servlet.http.Part;
 import java.io.IOException;
 
 @WebServlet("/edit")
-@MultipartConfig( location = "C:\\tmp", maxFileSize = 10*1024*1024, maxRequestSize = 5*10*1024*1024, fileSizeThreshold = 1024*1024)
+@MultipartConfig( location = "/tmp", maxFileSize = 10*1024*1024, maxRequestSize = 5*10*1024*1024, fileSizeThreshold = 1024*1024)
 public class EditSubtitle extends HttpServlet {
     private static final long serialVersionUID = 1L;
     //Correspond au nom du champ qui va accueillir les fichiers de sous-titre dans le formulaire
@@ -34,6 +34,8 @@ public class EditSubtitle extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        request.setCharacterEncoding("UTF-8");
 
         ServletContext context = getServletContext();
         String error = "";
@@ -51,6 +53,7 @@ public class EditSubtitle extends HttpServlet {
 
             subtitlesHandler = new SubtitlesHandler();
             subFilesDao = daoFactory.getSubFilesDao();
+            //TODO : réparer l'upload
             subtitlesFile = subtitlesHandler.toSubFile(SubFilesDaoSql.ClearSpecialChar(UploadManager.getFileName(part)),uploadManager.PartToArray(part));
 
 
@@ -72,6 +75,8 @@ public class EditSubtitle extends HttpServlet {
         request.setAttribute("pageTitle", pageTitle);
         request.setAttribute("filename", subtitlesFile.getName());
         request.setAttribute("subtitles", subtitlesFile.getSubtitles());
+        request.setAttribute("startTimes", subtitlesFile.getStartTimes());
+        request.setAttribute("endTimes", subtitlesFile.getEndTimes());
         this.getServletContext().getRequestDispatcher("/WEB-INF/edit_subtitle.jsp").forward(request, response);
     }
 

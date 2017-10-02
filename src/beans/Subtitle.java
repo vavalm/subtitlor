@@ -10,7 +10,8 @@ public class Subtitle {
     private String text;
     private String translatedText;
 
-    public Subtitle(){ }
+    public Subtitle(){ text = null;
+    translatedText = null;}
 
     public int getNumber() {
         return number;
@@ -41,7 +42,11 @@ public class Subtitle {
     }
 
     public void setText(String text) {
-        this.text = text;
+        if (this.text != null && this.text != text) { //si le sous-titre a déjà une première ligne alors on ajoute une deuxième ligne
+            this.text += "\n" + text;
+        } else {
+            this.text = text;
+        }
     }
 
     public String getTranslatedText() {

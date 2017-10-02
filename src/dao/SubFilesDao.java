@@ -1,34 +1,39 @@
 package dao;
 
 import Exceptions.SubtitlesFileException;
+import beans.Film;
 import beans.Subtitle;
-import beans.SubtitlesFile;
+import beans.SubtitleFile;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
 public interface SubFilesDao {
 
     /**
-     * Enrehistre en BDD le fichier uploadé
+     * Enrehistre en BDD le fichier de sous-titre uploadé
      * @throws SubtitlesFileException
      */
-    public void saveUploadSubFile(SubtitlesFile subtitlesFile) throws SubtitlesFileException;
+    public void UploadSubtitleFile(SubtitleFile subtitleFile) throws SubtitlesFileException;
 
     /**
      * Restitue le fichier de sous-titres depuis la base de données
-     * @param fileName : nom du fichier à restituer
+     * @param idFilm : id fu fichier à restituer
      * @return
      */
-    public SubtitlesFile getSubtitlesFile(String fileName);
+    public SubtitleFile getSubtitleFile(int idFilm) throws SQLException;
 
     /**
-     * Permet d'obtenir toutes les tables contenues dans une base de données
-     * Et donc tous les fichiers de sous-titres
-     * @param dataBaseName
+     * Permet d'obtenir tous les noms de film disponibles en bdd
+     * @param
      * @return
      */
-    public ArrayList<String> getFilesInDB(String dataBaseName);
+    public ArrayList<Film> getFilms();
 
-    public void UpdateTranslatedSubtitles(String tableName, ArrayList<Subtitle> subtitles);
+    /**
+     * Permet de mettre à jour les traductions de sous-titres en base de données
+     * @param idFilm
+     * @param subtitles
+     */
+    public void UpdateTranslatedSubtitles(int idFilm, ArrayList<Subtitle> subtitles);
 }

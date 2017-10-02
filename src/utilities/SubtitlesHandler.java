@@ -2,17 +2,18 @@ package utilities;
 
 import Exceptions.SubtitlesFileException;
 import beans.Subtitle;
-import beans.SubtitlesFile;
+import beans.SubtitleFile;
 
 import javax.servlet.http.Part;
 import java.io.*;
-import java.nio.Buffer;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.regex.MatchResult;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class SubtitlesHandler {
-    private ArrayList<String> originalSubtitles = null;
+    private ArrayList<String> originalSubtitles;
 
     /**
      * Prend le fichier texte et met chaque ligne sous-forme de tableau
@@ -24,20 +25,32 @@ public class SubtitlesHandler {
     }
 
     /**
-     * Génère un Array de chaque ligne du contenu du fichier
+     * Créer l'objet SubtitleFile à partir du fichier part uploadé par l'utilisateur
+     * @param part
+     * @return
+     */
+    public SubtitleFile PartToSubFile(Part part, String name){
+        ArrayList<String> text = GenerateSubArray(part);
+        SubtitleFile subtitleFile = ArraytoSubFile(text);
+        subtitleFile.setName(name);
+
+        return subtitleFile;
+    }
+
+    /**
+     * Génère un Array<String> contenant chaque ligne du du fichier
      * @param part : Fichier dont on doit extraire chaque ligne
      * @return
      */
     private ArrayList<String> GenerateSubArray(Part part){
         BufferedReader br;
-        char[] buf = new char[1024];
         ArrayList<String> subs = new ArrayList<String>();
 
         try {
-            br = new BufferedReader(new InputStreamReader(part.getInputStream(), StandardCharsets.UTF_8));
+            br = new BufferedReader(new InputStreamReader(part.getInputStream(), "UTF-8"));
             String line;
             while ((line=br.readLine()) != null) {
-                subs.add(line);
+                subs.add(new String(line.getBytes("iso-8859-1"), "UTF-8"));
             }
             br.close();
         } catch (IOException e) {
@@ -47,48 +60,53 @@ public class SubtitlesHandler {
     }
 
     /**
-     * Creer l'objet SubtitlesFile à partir du contenu brut du fichier.
+     * Creer l'objet SubtitleFile à partir du contenu brut du fichier.
      * La fonction va générer un par un le tableau de sous-titres et décomposer chaque donnée.
-     * @param name : Nom du fichier
      * @param rawContent : Tableau de String contenant chaque ligne du fichier
      * @return
      */
-    public SubtitlesFile toSubFile(String name, ArrayList<String> rawContent){
-        SubtitlesFile subtitlesFile = new SubtitlesFile(name);
+    private SubtitleFile ArraytoSubFile(ArrayList<String> rawContent){
+        SubtitleFile subtitleFile = new SubtitleFile();
         ArrayList<Subtitle> subtitlesResult = new ArrayList<Subtitle>();
+        Subtitle subtitle = null;
 
-        for (int i = 0; i < rawContent.size()-3; i=i) {
-            Subtitle subtitle = new Subtitle();
-            subtitle.setNumber(Integer.parseInt(rawContent.get(i)));
-            String[] times = getTimes(rawContent.get(i+1));//on décompose la ligne de temps
-            subtitle.setStartTime(times[0]);//première ligne = numéro de sous-titre
-            subtitle.setEndTime(times[1]);//2e ligne = les temps de début et de fin
-            subtitle.setText(rawContent.get(i+2));//3e ligne = texte
-            subtitlesResult.add(subtitle);//on l'ajoute à notre liste de sous-titres
+        Pattern pattern1 = Pattern.compile("^([0-9]){1,9}$", Pattern.MULTILINE);
+        Pattern pattern2 = Pattern.compile("[a-z]", Pattern.CASE_INSENSITIVE);
+        Matcher matcher1;
+//todo : enelever variable test
+        int test = 0;
 
-            if (!rawContent.get(i+3).isEmpty() && !rawContent.get(i+3).equals("")){//deux lignes de texte
-                Subtitle subtitleSecondLine = null;
-                try {
-                    subtitleSecondLine = subtitle.clone();
-                } catch (CloneNotSupportedException e) {
-                    e.printStackTrace();
-                    System.out.println("Echec du clonage du sous-titre");
+        for (int i = 0; i < rawContent.size(); i++) {
+            String line = rawContent.get(i);
+            matcher1 = pattern1.matcher(line);
+//todo : problème si la dernière ligne n'est pas une ligne vide
+            //numéro de sous-titre => nouveau sous-titre + on stock le numéro de sous-titre
+            if (matcher1.find() == true) {
+                subtitle = new Subtitle();
+                subtitle.setNumber(Integer.parseInt(line));
+            } else if (i == rawContent.size()) { //dernière ligne du fichier
+                if (line.equals("\n") || line.equals("\r") || line.equals("")) { //dernière ligne qui est vide on enregistre
+                    subtitlesResult.add(subtitle);
+                } else { //dernière ligne est un texte de sous-titre
+                    subtitle.setText(line);
+                    test++;
+                    System.out.println("nombre  lignes testés" + test);
                 }
-                subtitleSecondLine.setText(rawContent.get(i+3));//4e ligne = 2e ligne de texte
-                subtitlesResult.add(subtitleSecondLine);
-                i = i + 5;
-            }
-            else if (!rawContent.get(i+4).isEmpty()){ //une seule ligne de texte
-                i = i + 4;
+            } else if (line.contains(" --> ")) { //une ligne de temps => on stock le temps de début et de fin
+                String[] times = getTimes(line);
+                subtitle.setStartTime(times[0]);
+                subtitle.setEndTime(times[1]);
+            } else if (pattern2.matcher(line).find() == true) { //Du texte (présence de lettres) => sauvegarde
+                subtitle.setText(line);
+            } else { //Si c'est la séparation entre deux blocs
+                subtitlesResult.add(subtitle);
+                test++;
+                System.out.println("nombre  lignes testés" + test);
             }
         }
 
-        subtitlesFile.setSubtitles(subtitlesResult);
-        return subtitlesFile;
-    }
-
-    public ArrayList<String> getSubtitles() {
-        return originalSubtitles;
+        subtitleFile.setSubtitles(subtitlesResult);
+        return subtitleFile;
     }
 
     /**
@@ -101,7 +119,6 @@ public class SubtitlesHandler {
     public String[] getTimes(String line) {
         String[] times;
         times = line.split(" --> ");
-        System.out.println(times[0]);
         return times;
     }
 

@@ -1,178 +1,128 @@
 package dao;
 
 import Exceptions.SubtitlesFileException;
+import beans.Film;
 import beans.Subtitle;
-import beans.SubtitlesFile;
+import beans.SubtitleFile;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class SubFilesDaoSql implements SubFilesDao {
     DaoFactory daoFactory;
+    Connection connection;
 
-    public SubFilesDaoSql(DaoFactory daoFactory) {
+    public SubFilesDaoSql(DaoFactory daoFactory) throws SQLException {
         this.daoFactory = daoFactory;
+        connection = daoFactory.getConnection();
+    }
+
+    private void closeConnection(ResultSet resultSet, Statement statement, Connection connection){
+        if (resultSet != null){
+            try {
+                resultSet.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        if (resultSet != null){
+            try {
+                statement.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        if (resultSet != null){
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     /**
-     * Fonction qui va enregistrer un fichier de sous-titres en BDD.
-     *
-     * @param subtitlesFile
+     * Trace tout le process d'enregistrement d'un SubtitleFile en base de données
+     * @param subtitleFile : fichier à enregistrer en bdd
      * @throws SubtitlesFileException
      */
     @Override
-    public void saveUploadSubFile(SubtitlesFile subtitlesFile) throws SubtitlesFileException {
-        boolean exist;
-
-        String tableName = ClearSpecialChar(subtitlesFile.getName());
-
-            System.out.println("creation de la table");
-            //La table a le nom du fichier qui aura été reformaté par ClearSpecialCara
-            exist = createTable(tableName);
-            //Si la table n'existait pas déjà, on enregistre les sous-titres
-            if (exist == false) {
-                SaveSubFilesInDB(tableName, subtitlesFile);
-            } else { //si la table existait alors on met à jour les infos
-                UpdateTranslatedSubtitles(tableName, subtitlesFile.getSubtitles());
-            }
+    public void UploadSubtitleFile(SubtitleFile subtitleFile) throws SubtitlesFileException {
+        //On creer l'entrée en bdd s'il n'est pas déjà présent
+        int id = CreateFilmInDb(subtitleFile.getName());
+        //si le film n'était pas en base de données on stock l'id du film
+        if (id != 0) {
+            subtitleFile.setIdFilm(id);
+        }
+        //On entre ligne par ligne les sous-titres
+        SetTextInDb(subtitleFile);
     }
 
     /**
-     * Permet de reconstituer le bean SubtitleFiles à partir du fichier sélectionné en bdd
-     *
-     * @param fileName : le fichier à récupérer en bdd
-     * @return
+     * Créer le film en base de données s'il n'existe pas déjà
+     * @param name : Le nom du film
+     * @return int : l'id d'enregistrement du film
      */
-    public SubtitlesFile getSubtitlesFile(String fileName) {
-        fileName = ClearSpecialChar(fileName);//on enlève tous les caractères spéciaux comme les noms dans la bdd
-        SubtitlesFile subtitlesFile = new SubtitlesFile(fileName);
-        ArrayList<Subtitle> subtitles = new ArrayList<Subtitle>();
+    private int CreateFilmInDb(String name){
 
-        Connection connection = null;
-        Statement statement = null;
-        ResultSet resultSet = null;
+        Boolean isInDB = false;
 
-
-
-//        Requête préparé pour récupérer la table ayant pour nom fileName
-        String req = "SELECT * FROM " + fileName;
+        //Est-ce que le film existe déjà en base de données ?
+        ArrayList<Film> filmsInDb = getFilms();
+        for (Film film : filmsInDb){
+            if (film.getName().equals(name)) {
+                isInDB = true;
+            }
+        }
 
         try {
-            connection = daoFactory.getConnection();
-            statement = connection.createStatement();
-            resultSet = statement.executeQuery(req); //on récupère les sous-titres
-
-            while (resultSet.next()) {
-                Subtitle subtitle = new Subtitle();
-                subtitle.setNumber(resultSet.getInt("sub_number"));
-                subtitle.setText(resultSet.getString("subtitle"));
-                subtitle.setTranslatedText(resultSet.getString("translated_subtitle"));
-                subtitle.setStartTime(resultSet.getString("start_time"));
-                subtitle.setEndTime(resultSet.getString("end_time"));
-
-                subtitles.add(subtitle);
+            //si le film n'est pas en bdd on le créer
+            if (isInDB == false) {
+                String req = "INSERT INTO `films`(`titre`) VALUES (?)";
+                PreparedStatement statement = connection.prepareStatement(req);
+                statement.setString(1, name);
+                return statement.executeUpdate();//retourne l'id du film que l'on a enregistré
+            } else {
+                System.out.println("Film déjà présent en bdd");
+                return 0;
             }
-
-            subtitlesFile.setSubtitles(subtitles);
         } catch (SQLException e) {
             e.printStackTrace();
-            System.out.println("erreur lors du getSubtitlesFile");
-        }
-        finally {
-            closeConnection(resultSet, statement, connection);
+            return -1;
         }
 
-        return subtitlesFile;
     }
 
     /**
-     * Créer une table si elle n'existe pas déjà
-     *
-     * @param tableName : nom de la table à créer
-     * @throws SQLException
+     * Enregistre les textes de sous-titres d'un film
+     * @param subtitleFile : Fichier de sous-titres
      */
-    private boolean createTable(String tableName)  {
-        tableName = ClearSpecialChar(tableName);
-        Connection connection = null;
-        Statement statement = null;
-        ResultSet resultSet = null;
-
-        //On vérifie l'existance de la table et si elle existe on renvoie true
-        String state = "SHOW TABLES ";
-
-
-//        connection = daoFactory.getConnection();
-        state = "CREATE TABLE IF NOT EXISTS " + tableName + " (\n" +
-                "                  `id` int(11) NOT NULL AUTO_INCREMENT,\n" +
-                "                  `sub_number` int(11) NOT NULL COMMENT 'Correspond au numéro de sous-titre',\n" +
-                "                 `subtitle` varchar(300) NOT NULL,\n" +
-                "                 `translated_subtitle` varchar(300) DEFAULT NULL,\n" +
-                "                 `start_time` varchar(12) NOT NULL COMMENT 'démarrage sous titre dans le temps',\n" +
-                "                 `end_time` varchar(12) NOT NULL COMMENT 'fin du sous titre',\n" +
-                "                   PRIMARY KEY (id)\n" +
-                "                ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COMMENT='Table sous-titres de la video de présentation'";
-
-
-        try {
-            connection = daoFactory.getConnection();
-            resultSet = connection.createStatement().executeQuery(state);
-            while (resultSet.next()) {
-                if (resultSet.getString("Tables_in_subtitles").equals(tableName)) {
-                    System.out.println("Table déjà existante");
-                    return true;
-                }
-            }
-            statement = connection.createStatement();
-            statement.execute(state);
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-            System.out.println("Erreur creation table");
-        }
-
-        return false;
-    }
-
-    public static String ClearSpecialChar(String str) {
-        Pattern pattern = Pattern.compile("\\W");//regex pour selectionner tous les caractères spéciaux
-        Matcher matcher = pattern.matcher(str);//on  place la chaine à traiter
-        matcher.replaceAll("_"); //on définit le caractère de remplacement
-        return str;
-    }
-
-
-    /**
-     * On enregistre les sous-titres en base de données.
-     * Cette fonction sera utilisée dès lors qu'un utilisateur upload un nouveau fichier en BDD
-     *
-     * @param tableName     : le nom de la table dans laquelle on enregistre les données
-     * @param subtitlesFile : les sous-titres à enregistrer
-     */
-    private void SaveSubFilesInDB(String tableName, SubtitlesFile subtitlesFile) {
-        String req = "INSERT INTO " + tableName +
-                "(`sub_number`, `subtitle`, `translated_subtitle`, `start_time`, `end_time`) VALUES (?,?,?,?,?)";
-        Connection connection = null;
+    private void SetTextInDb(SubtitleFile subtitleFile){
+        String req = "INSERT INTO `sous_titres`(`id_film`, `numero_sous_titre`, `texte`, `texte_traduit`, `start_time`, `end_time`) VALUES (?,?,?,?,?,?)";
         PreparedStatement preparedStatement = null;
 
         try {
-            connection = daoFactory.getConnection();
             //boucle de parcours de tous les sous-titres du fichier de sous-titres
-            for (int i = 0; i < subtitlesFile.getSubtitles().size(); i++) {
-                int number = subtitlesFile.getSubtitles().get(i).getNumber();
-                String text = subtitlesFile.getSubtitles().get(i).getText();
-                String translatedText = subtitlesFile.getSubtitles().get(i).getTranslatedText();
-                String startTime = subtitlesFile.getSubtitles().get(i).getStartTime();
-                String endTime = subtitlesFile.getSubtitles().get(i).getEndTime();
+            for (int i = 0; i < subtitleFile.getSubtitles().size(); i++) {
+
+                int idFilm = subtitleFile.getIdFilm();
+                int number = subtitleFile.getSubtitles().get(i).getNumber();
+                String text = subtitleFile.getSubtitles().get(i).getText();
+                String translatedText = subtitleFile.getSubtitles().get(i).getTranslatedText();
+                String startTime = subtitleFile.getSubtitles().get(i).getStartTime();
+                String endTime = subtitleFile.getSubtitles().get(i).getEndTime();
                 preparedStatement = connection.prepareStatement(req);
 
-                preparedStatement.setInt(1, number);
-                preparedStatement.setString(2, text);
-                preparedStatement.setString(3, translatedText);
-                preparedStatement.setString(4, startTime);
-                preparedStatement.setString(5, endTime);
+                preparedStatement.setInt(1, idFilm);
+                preparedStatement.setInt(2, number);
+                preparedStatement.setString(3, text);
+                preparedStatement.setString(4, translatedText);
+                preparedStatement.setString(5, startTime);
+                preparedStatement.setString(6, endTime);
 
                 preparedStatement.executeUpdate();
             }
@@ -184,100 +134,105 @@ public class SubFilesDaoSql implements SubFilesDao {
         }
     }
 
-
     /**
-     * Met à jour la traduction en base de données pour un fichier donné
-     *
-     * @param tableName : Nom de la table (qui est le nom du fichier reformaté) à traiter
-     * @param subtitles : Les sous-titres contenants le texte traduit à enregistrer
+     * Restitue le fichier de sous-titre d'un film
+     * @param idFilm : id fu fichier à restituer
+     * @return
      */
-    public void UpdateTranslatedSubtitles(String tableName, ArrayList<Subtitle> subtitles) {
-        String req = "UPDATE " + tableName + " SET `translated_subtitle`=? WHERE `subtitle`= ?";
-        PreparedStatement preparedStatement = null;
-        Connection connection = null;
+    @Override
+    public SubtitleFile getSubtitleFile(int idFilm) throws SQLException {
+        SubtitleFile subtitleFile = new SubtitleFile();
+        String name = "";
+        ArrayList<Subtitle> subtitles = new ArrayList<Subtitle>();
+        Subtitle subtitle;
 
-        try {
-            connection = daoFactory.getConnection();
-            preparedStatement = connection.prepareStatement(req);
+        String req = "SELECT * FROM `films` JOIN `sous_titres` " +
+                "ON films.id = sous_titres.id_film " +
+                "WHERE films.id = ? " +
+                "ORDER BY sous_titres.numero_sous_titre";
 
-            //Parcours de tous les sous-titres pour mettre à jour la traduction en BDD
-            for (Subtitle subtitle :
-                    subtitles) {
-                try {
-                    preparedStatement.setString(1, subtitle.getTranslatedText());
-                    preparedStatement.setString(2, subtitle.getText());
-                    preparedStatement.executeUpdate();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                    System.out.println("Erreur requête préparée UPDATE pour enregistrer la mise à jour des sous-titres traduits. Echec à l'indice i = " + subtitles.indexOf(subtitle));
-                    System.out.println("requete : " + req);
-                }
-            }
+        PreparedStatement statement = connection.prepareStatement(req);
+        statement.setInt(1, idFilm);
+        ResultSet resultSet = statement.executeQuery();
 
-        } catch (SQLException e) {
-            e.printStackTrace();
-            System.out.println("Erreur dans l'enregistrement de la traduction");
+        //Enregistrement de toutes les sous-titres dans un tableau
+        while (resultSet.next()) {
+            subtitle = new Subtitle();
+            subtitle.setNumber(resultSet.getInt("numero_sous_titre"));
+            subtitle.setText(resultSet.getString("texte"));
+            subtitle.setTranslatedText(resultSet.getString("texte_traduit"));
+            subtitle.setStartTime(resultSet.getString("start_time"));
+            subtitle.setEndTime(resultSet.getString("end_time"));
+
+            subtitles.add(subtitle);
+            name = resultSet.getString("titre");
         }
 
-        finally {
-            closeConnection(null, preparedStatement, connection);
-        }
+        //Recomposition de subtitleFile
+        subtitleFile.setName(name);
+        subtitleFile.setIdFilm(idFilm);
+        subtitleFile.setSubtitles(subtitles);
 
+        return subtitleFile;
     }
 
     /**
-     * Permet d'avoir une liste des tables (et donc des fichiers de sous-titres)
-     *
-     * @param dataBaseName : Base de données à traiter
-     * @return Liste des tables de dataBaseName
+     * Donne la liste des films présents en bdd
+     * @return
      */
-    public ArrayList<String> getFilesInDB(String dataBaseName) {
-        String req = "SHOW TABLES IN " + dataBaseName;
-        ArrayList<String> res = new ArrayList<String>();
-
-        Connection connection = null;
-        Statement statement = null;
-        ResultSet resultSet = null;
-
+    @Override
+    public ArrayList<Film> getFilms() {
+        String req = "SELECT * FROM films";
+        ArrayList<Film> films = new ArrayList<Film>();
         try {
-            connection = daoFactory.getConnection();
-            statement = connection.createStatement();
-            resultSet = statement.executeQuery(req);
-            while (resultSet.next()) {
-                res.add(resultSet.getString("Tables_in_" + dataBaseName));
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(req);
+            while (resultSet.next()){
+                films.add(new Film(resultSet.getString("titre"), resultSet.getInt("id")));
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        finally {
-            closeConnection(resultSet, statement, connection);
-        }
-        return res;
+        return films;
     }
 
-    private void closeConnection(ResultSet resultSet, Statement statement, Connection connection){
-//        if (resultSet != null){
-//            try {
-//                resultSet.close();
-//            } catch (SQLException e) {
-//                e.printStackTrace();
-//            }
-//        }
-//
-//        if (resultSet != null){
-//            try {
-//                statement.close();
-//            } catch (SQLException e) {
-//                e.printStackTrace();
-//            }
-//        }
-//
-//        if (resultSet != null){
-//            try {
-//                connection.close();
-//            } catch (SQLException e) {
-//                e.printStackTrace();
-//            }
-//        }
+    /**
+     * Mise à jour des sous-titres traduits en base de données
+     * @param idFilm : Le film concerné
+     * @param subtitles : les sous-titres traduits
+     */
+    @Override
+    public void UpdateTranslatedSubtitles(int idFilm, ArrayList<Subtitle> subtitles) {
+        String req = "UPDATE `sous_titres` SET `texte_traduit` = ? WHERE `id_film` = ? AND `texte` = ?";
+
+        try {
+//            Désactive l'auto commit pour éviter d'envoyer qu'une partie des requêtes en cas de problèmes
+            connection.setAutoCommit(false);
+            for (Subtitle subtitle : subtitles) {
+                PreparedStatement statement = connection.prepareStatement(req);
+                statement.setString(1, subtitle.getTranslatedText());
+                statement.setInt(2, idFilm);
+                statement.setString(3, subtitle.getText());
+                statement.executeUpdate();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            try {
+                connection.commit();
+                connection.setAutoCommit(true);//On réactive l'auto commit pour la suite
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
     }
+
+    public static String ClearSpecialChar(String str) {
+        Pattern pattern = Pattern.compile("\\W");//regex pour selectionner tous les caractères spéciaux
+        Matcher matcher = pattern.matcher(str);//on  place la chaine à traiter
+        matcher.replaceAll("_"); //on définit le caractère de remplacement
+        return str;
+    }
+
 }

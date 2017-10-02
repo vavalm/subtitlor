@@ -2,11 +2,16 @@ package beans;
 
 import java.util.ArrayList;
 
-public class SubtitlesFile {
+public class SubtitleFile {
+    private int idFilm;
     private String name;
     private ArrayList<Subtitle> subtitles;
 
-    public SubtitlesFile(String fileName) {
+    public SubtitleFile(){
+
+    }
+
+    public SubtitleFile(String fileName) {
         setName(fileName);
     }
 
@@ -47,4 +52,13 @@ public class SubtitlesFile {
 
         return endTimes;
     }
+
+    public int getIdFilm() {
+        return idFilm;
+    }
+
+    public void setIdFilm(int idFilm) {
+        this.idFilm = idFilm;
+    }
+
 }

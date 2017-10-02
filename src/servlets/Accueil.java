@@ -1,12 +1,12 @@
 package servlets;
 
+import beans.Film;
 import beans.Subtitle;
-import beans.SubtitlesFile;
+import beans.SubtitleFile;
 import dao.DaoFactory;
 import dao.SubFilesDao;
 import dao.SubFilesDaoSql;
 import utilities.PropertiesPerso;
-import utilities.SubtitlesHandler;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -15,8 +15,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.File;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 @WebServlet(urlPatterns = "/home")
@@ -28,13 +28,18 @@ public class Accueil extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
 
-        ServletContext context = getServletContext();
         DaoFactory daoFactory = DaoFactory.getInstance();
-        SubFilesDao subFilesDao = new SubFilesDaoSql(daoFactory);
+        SubFilesDao subFilesDao = null;
 
-        ArrayList<String> files = subFilesDao.getFilesInDB(PropertiesPerso.DATABASE_NAME);
+        try {
+            subFilesDao = new SubFilesDaoSql(daoFactory);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
-        req.setAttribute("subFiles", files);
+        ArrayList<Film> films = subFilesDao.getFilms();
+
+        req.setAttribute("films", films);
         req.setAttribute("subtitlesFileName", PropertiesPerso.SUBFILE_FIELD_NAME);//Nom du champ du fichier
         this.getServletContext().getRequestDispatcher("/WEB-INF/accueil.jsp").forward(req, resp);
     }
@@ -44,32 +49,45 @@ public class Accueil extends HttpServlet {
         req.setCharacterEncoding("UTF-8");
 
         int i = 0;
-        String fieldName = "line";
-        String fieldContent = "";
-        String tableName = req.getParameter("filename");
-
+        String fieldContent;
         ArrayList<String> translatedSubtitles = new ArrayList<String>();
-        DaoFactory daoFactory = DaoFactory.getInstance();
-        SubFilesDao subFilesDao = new SubFilesDaoSql(daoFactory);
-        SubtitlesFile subtitlesFile;
+        SubtitleFile subtitlesFile = null;
 
-        //on récolte tous les sous-titres du formulaire
+        int filmId = Integer.parseInt(req.getParameter("filmId")); //Récupération idfilm via champ caché du forumulaire
+
+
+        DaoFactory daoFactory = DaoFactory.getInstance();
+        SubFilesDao subFilesDao = null;
+        try {
+            subFilesDao = new SubFilesDaoSql(daoFactory);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        //on récolte tous les sous-titres du formulaire (dans tous les champ lineX du formulaire)
         while ((fieldContent = req.getParameter("line" + i)) != null){
             translatedSubtitles.add(fieldContent);
             i++;
         }
 
-        subtitlesFile = subFilesDao.getSubtitlesFile(tableName);
-
-        //On remplace tous les sous-titres par les nouveaux qui sont tirés du formulaire
-        i=0;
-        for (Subtitle sub :
-                subtitlesFile.getSubtitles()) {
-            sub.setTranslatedText(translatedSubtitles.get(i));
-            i++;
+        try {
+            subtitlesFile = subFilesDao.getSubtitleFile(filmId);
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
 
-        subFilesDao.UpdateTranslatedSubtitles(tableName, subtitlesFile.getSubtitles());
+        //On remplace tous les sous-titres par les nouveaux qui sont tirés du formulaire
+        i=-1;
+        int size = subtitlesFile.getSubtitles().size();
+        for (Subtitle sub : subtitlesFile.getSubtitles()) {
+            i++;
+            if (i < size) {
+                sub.setTranslatedText(translatedSubtitles.get(i));
+            }
+        }
+
+
+        subFilesDao.UpdateTranslatedSubtitles(subtitlesFile.getIdFilm(), subtitlesFile.getSubtitles());
 
         req.setAttribute("pageTitle", "Merci de votre participation");
         doGet(req, resp);

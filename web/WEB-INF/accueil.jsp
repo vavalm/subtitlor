@@ -17,20 +17,23 @@
     <c:out value="${pageTitle}" default="Bienvenue sur la plateforme d'édition de sous-titres." />
 </h1>
 <p> Importer votre fichier pour traduire les sous-titres
-<form method="post" action="/edit" enctype="multipart/form-data">
+<form method="post" action="<c:url value="edit"/>" enctype="multipart/form-data" acceptcharset="UTF-8">
     <label for="${subtitlesFileName}">Fichier de sous-titres : </label>
     <input type="file" name="${subtitlesFileName}" id="${subtitlesFileName}">
+    <br>
+    <label for="filmName">Nom du film : </label>
+    <input type="text" name="filmName" id="filmName" minlength="3" required/>
     <input type="hidden" name="idform" value="upload"/>
     <input type="submit" name="edit">
 </form>
 </p>
 <br><br>
 <p> Vous pouvez exporter ou modifier un fichier de sous-titres déjà présent en base de données
-<form method="post" action="/edit" enctype="multipart/form-data">
-    <label>Choisissez un fichier de sous-titres en base de données : </label>
-    <select name="fileInBdd">
-        <c:forEach items="${subFiles}" var="subFile" varStatus="status">
-            <option value="${subFile}">${subFile}</option>
+<form method="post" action="<c:url value="edit"/>" enctype="multipart/form-data">
+    <label>Choisissez un film en base de données : </label>
+    <select name="filmId">
+        <c:forEach items="${films}" var="film" varStatus="status">
+            <option value="${film.getIdFilm()}">${film}</option>
         </c:forEach>
     </select>
     <%--<input type="submit" name="export" id="export" value="exporter">--%>

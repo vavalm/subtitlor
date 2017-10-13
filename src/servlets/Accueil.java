@@ -76,12 +76,18 @@ public class Accueil extends HttpServlet {
             e.printStackTrace();
         }
 
+        for (Subtitle sub :
+                subtitlesFile.getSubtitles()) {
+            System.out.println(sub.getText());
+        }
+
         //On remplace tous les sous-titres par les nouveaux qui sont tirés du formulaire
         i=-1;
         int size = subtitlesFile.getSubtitles().size();
         for (Subtitle sub : subtitlesFile.getSubtitles()) {
             i++;
             if (i < size) {
+                System.out.println("i :" + i +"size : " + size);
                 sub.setTranslatedText(translatedSubtitles.get(i));
             }
         }

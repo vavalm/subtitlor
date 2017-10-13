@@ -73,13 +73,10 @@ public class SubtitlesHandler {
         Pattern pattern1 = Pattern.compile("^([0-9]){1,9}$", Pattern.MULTILINE);
         Pattern pattern2 = Pattern.compile("[a-z]", Pattern.CASE_INSENSITIVE);
         Matcher matcher1;
-//todo : enelever variable test
-        int test = 0;
 
         for (int i = 0; i < rawContent.size(); i++) {
             String line = rawContent.get(i);
             matcher1 = pattern1.matcher(line);
-//todo : problème si la dernière ligne n'est pas une ligne vide
             //numéro de sous-titre => nouveau sous-titre + on stock le numéro de sous-titre
             if (matcher1.find() == true) {
                 subtitle = new Subtitle();
@@ -89,8 +86,6 @@ public class SubtitlesHandler {
                     subtitlesResult.add(subtitle);
                 } else { //dernière ligne est un texte de sous-titre
                     subtitle.setText(line);
-                    test++;
-                    System.out.println("nombre  lignes testés" + test);
                 }
             } else if (line.contains(" --> ")) { //une ligne de temps => on stock le temps de début et de fin
                 String[] times = getTimes(line);
@@ -100,8 +95,6 @@ public class SubtitlesHandler {
                 subtitle.setText(line);
             } else { //Si c'est la séparation entre deux blocs
                 subtitlesResult.add(subtitle);
-                test++;
-                System.out.println("nombre  lignes testés" + test);
             }
         }
 

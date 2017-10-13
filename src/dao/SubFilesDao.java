@@ -30,6 +30,10 @@ public interface SubFilesDao {
      */
     public ArrayList<Film> getFilms();
 
+    public boolean isInBdd(int idFilm);
+
+    public boolean isInBdd(String nameFilm);
+
     /**
      * Permet de mettre à jour les traductions de sous-titres en base de données
      * @param idFilm

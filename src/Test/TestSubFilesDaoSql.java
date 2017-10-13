@@ -21,8 +21,8 @@ public class TestSubFilesDaoSql {
         connection = daoFactory.getConnection();
         subFilesDaoSql = new SubFilesDaoSql(daoFactory);
 
-//        TestUploadSubtitleFile();
-        TestUpdateTranslatedSubtitle();
+        TestUploadSubtitleFile();
+//        TestUpdateTranslatedSubtitle();
     }
 
     public static void TestGetFilms(){
@@ -35,25 +35,25 @@ public class TestSubFilesDaoSql {
     }
 
     public static void TestUploadSubtitleFile() throws SQLException, SubtitlesFileException {
-        SubtitleFile subtitleFile = new SubtitleFile("testFilm4");
+        SubtitleFile subtitleFile = new SubtitleFile("test2");
 
         ArrayList<Subtitle> subtitles = new ArrayList<Subtitle>();
 
         Subtitle subtitle1 = new Subtitle();
-        subtitle1.setText("encore 1");
+        subtitle1.setText("test srt 1");
         subtitle1.setStartTime("00:00:27,029");
         subtitle1.setEndTime("00:00:28,030");
         subtitles.add(subtitle1);
 
         Subtitle subtitle2 = new Subtitle();
-        subtitle2.setText("encore 2");
+        subtitle2.setText("test srt 2");
         subtitle2.setStartTime("00:00:29,029");
         subtitle2.setEndTime("00:00:30,030");
         subtitles.add(subtitle2);
 
 
         subtitleFile.setSubtitles(subtitles);
-        subtitleFile.setIdFilm(5);
+        subtitleFile.setIdFilm(4);
 
         subFilesDaoSql.UploadSubtitleFile(subtitleFile);
         System.out.println("id du film : " + subtitleFile.getIdFilm());

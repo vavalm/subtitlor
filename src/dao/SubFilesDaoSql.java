@@ -11,8 +11,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class SubFilesDaoSql implements SubFilesDao {
-    DaoFactory daoFactory;
-    Connection connection;
+    private DaoFactory daoFactory;
+    private Connection connection;
 
     public SubFilesDaoSql(DaoFactory daoFactory) throws SQLException {
         this.daoFactory = daoFactory;
@@ -72,20 +72,20 @@ public class SubFilesDaoSql implements SubFilesDao {
         Boolean isInDB = false;
 
         //Est-ce que le film existe déjà en base de données ?
-        ArrayList<Film> filmsInDb = getFilms();
-        for (Film film : filmsInDb){
-            if (film.getName().equals(name)) {
-                isInDB = true;
-            }
+        if (isInBdd(name)) {
+            isInDB = true;
         }
 
         try {
             //si le film n'est pas en bdd on le créer
             if (isInDB == false) {
                 String req = "INSERT INTO `films`(`titre`) VALUES (?)";
-                PreparedStatement statement = connection.prepareStatement(req);
+                PreparedStatement statement = connection.prepareStatement(req, Statement.RETURN_GENERATED_KEYS);
                 statement.setString(1, name);
-                return statement.executeUpdate();//retourne l'id du film que l'on a enregistré
+                statement.executeUpdate();//retourne l'id du film que l'on a enregistré
+                ResultSet resultSet = statement.getGeneratedKeys();
+                resultSet.next();
+                return resultSet.getInt(1);
             } else {
                 System.out.println("Film déjà présent en bdd");
                 return 0;
@@ -107,14 +107,14 @@ public class SubFilesDaoSql implements SubFilesDao {
 
         try {
             //boucle de parcours de tous les sous-titres du fichier de sous-titres
-            for (int i = 0; i < subtitleFile.getSubtitles().size(); i++) {
+            for (Subtitle subtitle : subtitleFile.getSubtitles()) {
 
                 int idFilm = subtitleFile.getIdFilm();
-                int number = subtitleFile.getSubtitles().get(i).getNumber();
-                String text = subtitleFile.getSubtitles().get(i).getText();
-                String translatedText = subtitleFile.getSubtitles().get(i).getTranslatedText();
-                String startTime = subtitleFile.getSubtitles().get(i).getStartTime();
-                String endTime = subtitleFile.getSubtitles().get(i).getEndTime();
+                int number = subtitle.getNumber();
+                String text = subtitle.getText();
+                String translatedText = subtitle.getTranslatedText();
+                String startTime = subtitle.getStartTime();
+                String endTime = subtitle.getEndTime();
                 preparedStatement = connection.prepareStatement(req);
 
                 preparedStatement.setInt(1, idFilm);
@@ -125,6 +125,8 @@ public class SubFilesDaoSql implements SubFilesDao {
                 preparedStatement.setString(6, endTime);
 
                 preparedStatement.executeUpdate();
+                System.out.println("Sous-titre, id : " + subtitle.getNumber() + " Texte :"
+                + subtitle.getText());
             }
 
 
@@ -178,7 +180,7 @@ public class SubFilesDaoSql implements SubFilesDao {
 
     /**
      * Donne la liste des films présents en bdd
-     * @return
+     * @return la liste des films
      */
     @Override
     public ArrayList<Film> getFilms() {
@@ -196,6 +198,37 @@ public class SubFilesDaoSql implements SubFilesDao {
         return films;
     }
 
+    @Override
+    public boolean isInBdd(int idFilm) {
+        ArrayList<Film> films = getFilms();
+        Boolean exist = false;
+
+        for (Film film :
+                films) {
+            if (film.getIdFilm() == idFilm) {
+                exist = true;
+            }
+        }
+
+        return exist;
+    }
+
+    @Override
+    public boolean isInBdd(String nameFilm) {
+        ArrayList<Film> films = getFilms();
+        Boolean exist = false;
+
+        for (Film film :
+                films) {
+            if (film.getName().equals(nameFilm)) {
+                exist = true;
+            }
+        }
+
+        return exist;
+    }
+
+
     /**
      * Mise à jour des sous-titres traduits en base de données
      * @param idFilm : Le film concerné
@@ -203,7 +236,7 @@ public class SubFilesDaoSql implements SubFilesDao {
      */
     @Override
     public void UpdateTranslatedSubtitles(int idFilm, ArrayList<Subtitle> subtitles) {
-        String req = "UPDATE `sous_titres` SET `texte_traduit` = ? WHERE `id_film` = ? AND `texte` = ?";
+        String req = "UPDATE `sous_titres` SET `texte_traduit` = ? WHERE `id_film` = ? AND `texte` = ? AND `numero_sous_titre`= ?";
 
         try {
 //            Désactive l'auto commit pour éviter d'envoyer qu'une partie des requêtes en cas de problèmes
@@ -213,6 +246,7 @@ public class SubFilesDaoSql implements SubFilesDao {
                 statement.setString(1, subtitle.getTranslatedText());
                 statement.setInt(2, idFilm);
                 statement.setString(3, subtitle.getText());
+                statement.setInt(4, subtitle.getNumber());
                 statement.executeUpdate();
             }
         } catch (SQLException e) {

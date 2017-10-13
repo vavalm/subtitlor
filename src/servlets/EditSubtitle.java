@@ -54,10 +54,15 @@ public class EditSubtitle extends HttpServlet {
 
             subtitlesHandler = new SubtitlesHandler();
             subtitleFile = subtitlesHandler.PartToSubFile(part, filmName); //Transformation en fichier de sous-titres
+
+            if (subFilesDao.isInBdd(filmName)) {
+                pageTitle = "Edition d'une traduction en base de données";
+            }
+
             subFilesDao.UploadSubtitleFile(subtitleFile);// Enregistrement en bdd
         }
 
-        /////////////////////        On veut éditer un fichier déjà présent en BDD
+/////////////////////        On veut éditer un fichier déjà présent en BDD
 
         else if (request.getParameter("idform").equals("edit")) {
             pageTitle = "Edition d'une traduction en base de données";
@@ -70,7 +75,7 @@ public class EditSubtitle extends HttpServlet {
         }
 
 
-        subtitleFile.setSubtitles(subtitleFile.getSubtitles());//récupère les sous-titres originaux
+//        subtitleFile.setSubtitles(subtitleFile.getSubtitles());//récupère les sous-titres originaux
 
         request.setAttribute("pageTitle", pageTitle);
         request.setAttribute("subtitleFile", subtitleFile);

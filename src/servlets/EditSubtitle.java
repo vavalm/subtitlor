@@ -30,7 +30,6 @@ public class EditSubtitle extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         request.setCharacterEncoding("UTF-8");
 
         //Initialisation des variables
@@ -62,24 +61,20 @@ public class EditSubtitle extends HttpServlet {
             subFilesDao.UploadSubtitleFile(subtitleFile);// Enregistrement en bdd
         }
 
-/////////////////////        On veut éditer un fichier déjà présent en BDD
+/////////////////////        On veut éditer/exporter un fichier déjà présent en BDD
 
         else if (request.getParameter("idform").equals("edit")) {
             pageTitle = "Edition d'une traduction en base de données";
-
             int idFilm = Integer.parseInt(request.getParameter("filmId"));//id fu film à extraire de la bdd
-
             try {
                 subtitleFile = subFilesDao.getSubtitleFile(idFilm);
             } catch (SQLException e) { }
         }
 
-
-//        subtitleFile.setSubtitles(subtitleFile.getSubtitles());//récupère les sous-titres originaux
-
         request.setAttribute("pageTitle", pageTitle);
         request.setAttribute("subtitleFile", subtitleFile);
-        this.getServletContext().getRequestDispatcher("/WEB-INF/edit_subtitle.jsp").forward(request, response);
+
+            this.getServletContext().getRequestDispatcher("/WEB-INF/edit_subtitle.jsp").forward(request, response);
     }
 
 }

@@ -87,7 +87,6 @@ public class Accueil extends HttpServlet {
         for (Subtitle sub : subtitlesFile.getSubtitles()) {
             i++;
             if (i < size) {
-                System.out.println("i :" + i +"size : " + size);
                 sub.setTranslatedText(translatedSubtitles.get(i));
             }
         }

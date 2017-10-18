@@ -6,9 +6,7 @@ import beans.SubtitleFile;
 
 import javax.servlet.http.Part;
 import java.io.*;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
-import java.util.regex.MatchResult;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -17,6 +15,7 @@ public class SubtitlesHandler {
 
     /**
      * Prend le fichier texte et met chaque ligne sous-forme de tableau
+     *
      * @throws SubtitlesFileException
      */
 
@@ -26,10 +25,11 @@ public class SubtitlesHandler {
 
     /**
      * Créer l'objet SubtitleFile à partir du fichier part uploadé par l'utilisateur
+     *
      * @param part
      * @return
      */
-    public SubtitleFile PartToSubFile(Part part, String name){
+    public SubtitleFile PartToSubFile(Part part, String name) {
         ArrayList<String> text = GenerateSubArray(part);
         SubtitleFile subtitleFile = ArraytoSubFile(text);
         subtitleFile.setName(name);
@@ -39,18 +39,19 @@ public class SubtitlesHandler {
 
     /**
      * Génère un Array<String> contenant chaque ligne du du fichier
+     *
      * @param part : Fichier dont on doit extraire chaque ligne
      * @return
      */
-    private ArrayList<String> GenerateSubArray(Part part){
+    private ArrayList<String> GenerateSubArray(Part part) {
         BufferedReader br;
         ArrayList<String> subs = new ArrayList<String>();
 
         try {
             br = new BufferedReader(new InputStreamReader(part.getInputStream(), "UTF-8"));
             String line;
-            while ((line=br.readLine()) != null) {
-                subs.add(new String(line.getBytes("iso-8859-1"), "UTF-8"));
+            while ((line = br.readLine()) != null) {
+                subs.add(new String(line));
             }
             br.close();
         } catch (IOException e) {
@@ -62,10 +63,11 @@ public class SubtitlesHandler {
     /**
      * Creer l'objet SubtitleFile à partir du contenu brut du fichier.
      * La fonction va générer un par un le tableau de sous-titres et décomposer chaque donnée.
+     *
      * @param rawContent : Tableau de String contenant chaque ligne du fichier
      * @return
      */
-    private SubtitleFile ArraytoSubFile(ArrayList<String> rawContent){
+    private SubtitleFile ArraytoSubFile(ArrayList<String> rawContent) {
         SubtitleFile subtitleFile = new SubtitleFile();
         ArrayList<Subtitle> subtitlesResult = new ArrayList<Subtitle>();
         Subtitle subtitle = null;
@@ -118,12 +120,83 @@ public class SubtitlesHandler {
     /**
      * Reconstitue la ligne correspondant au temps du sous-titre
      * qui est de la forme
+     *
      * @param start : temps de début
-     * @param end : temps de fin
+     * @param end   : temps de fin
      * @return
      */
-    public String getSlotTimeLine (String start, String end){
-        return(start + " --> " + end);
+    public String getSlotTimeLine(String start, String end) {
+        return (start + " --> " + end);
+    }
+
+    /**
+     * Reconstitue le fichier de sous-titres en format .srt à partir du fichier de sous-titres
+     *
+     * @param subtitleFile
+     * @return
+     * @throws FileNotFoundException
+     * @throws UnsupportedEncodingException
+     */
+    public File getOriginalSrt(SubtitleFile subtitleFile, String contextPath, Boolean exportOriginal) {
+        new File(contextPath + "downloads").mkdirs(); //création du dossier s'il n'existe pas
+
+        //on constitue le chemin du fichier qui sera créé
+        String path = contextPath + "/downloads/" + subtitleFile.getName() + ".srt";
+        //on créer le fichier
+        File out = new File(path);
+        //On écrit dedans
+        writeInFile(out, subtitleFile, exportOriginal);
+
+        return out;
+    }
+
+    /**
+     * Ecriture des sous-titres dans le fichier
+     *
+     * @param out : Fichier dans lequel écrire
+     * @param subtitleFile : Fichier de sous-titres
+     * @param originalText : Si true : écriture des sous-titres originals, sinon écriture du texte traduit
+     */
+    private void writeInFile(File out, SubtitleFile subtitleFile, Boolean originalText) {
+        PrintWriter writer = null;
+
+        try {
+            writer = new PrintWriter(out.getAbsoluteFile(), "UTF-8");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+
+        if (originalText == true) {
+            for (Subtitle sub :
+                    subtitleFile.getSubtitles()) {
+
+                writer.print(sub.getNumber());
+                writer.print("\n");
+                writer.print(getSlotTimeLine(sub.getStartTime(), sub.getEndTime()));
+                writer.print("\n");
+                writer.print(sub.getText());
+                writer.print("\n");
+                writer.print("\n");
+
+            }
+        } else {
+            for (Subtitle sub :
+                    subtitleFile.getSubtitles()) {
+
+                writer.print(sub.getNumber());
+                writer.print("\n");
+                writer.print(getSlotTimeLine(sub.getStartTime(), sub.getEndTime()));
+                writer.print("\n");
+                writer.print(sub.getTranslatedText());
+                writer.print("\n");
+                writer.print("\n");
+
+            }
+        }
+
+        writer.close();
     }
 
 }

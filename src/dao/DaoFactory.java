@@ -66,7 +66,7 @@ public class DaoFactory {
     }
 
     public Connection getConnection() throws SQLException {
-        if (connection == null){
+        if (connection == null || connection.isClosed()){
             connection = DriverManager.getConnection(url, username, password);
         }
         return connection;

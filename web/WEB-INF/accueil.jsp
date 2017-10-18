@@ -29,9 +29,9 @@
 </p>
 <br><br>
 <p> Vous pouvez exporter ou modifier un fichier de sous-titres déjà présent en base de données
-<form method="post" action="<c:url value="edit"/>" enctype="multipart/form-data">
+<form method="post" action="<c:url value="edit"/>" enctype="multipart/form-data" id="filmsInBdd">
     <label>Choisissez un film en base de données : </label>
-    <select name="filmId">
+    <select name="filmId" id="filmNameChoice">
         <c:forEach items="${films}" var="film" varStatus="status">
             <option value="${film.getIdFilm()}">${film}</option>
         </c:forEach>
@@ -39,11 +39,9 @@
     <%--<input type="submit" name="export" id="export" value="exporter">--%>
     <input type="hidden" name="idform" value="edit"/>
     <input type="submit" name="edit" id="edit" value="Modifier">
+    <input type="button" name="export" id="edit" value="Exporter l'original" onclick="javascript:window.location.href='/download/'+ document.getElementById('filmNameChoice').value"/>
+    <input type="button" name="export" id="edit" value="Exporter la traduction" onclick="javascript:window.location.href='/download/translated/'+ document.getElementById('filmNameChoice').value"/>
 </form>
-</p>
-
-<p>
-    ${path}
 </p>
 </body>
 </html>

@@ -5,29 +5,9 @@
          id="WebApp_ID" version="3.1">
     <display-name>Subtitlor</display-name>
 
-    <!--SET CHARACTER ENCODING TO UTF8-->
-    <filter>
-        <filter-name>Set Character Encoding</filter-name>
-        <filter-class>org.apache.catalina.filters.SetCharacterEncodingFilter</filter-class>
-        <init-param>
-            <param-name>encoding</param-name>
-            <param-value>UTF-8</param-value>
-        </init-param>
-        <init-param>
-            <param-name>ignore</param-name>
-            <param-value>false</param-value>
-        </init-param>
-    </filter>
-    <filter-mapping>
-        <filter-name>Set Character Encoding</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>
-
-    <!--END SETTING UTF8-->
 
     <welcome-file-list>
         <welcome-file>/WEB-INF/index.jsp</welcome-file>
-        <welcome-file>/WEB-INF/accueil.jsp</welcome-file>
     </welcome-file-list>
 
     <!--0 Inclure les librairies et constantes-->
@@ -37,4 +17,22 @@
             <include-prelude>/WEB-INF/taglibs.jsp</include-prelude>
         </jsp-property-group>
     </jsp-config>
+
+    <!-- A filter that sets character encoding that is used to decode -->
+    <!-- parameters in a POST request -->
+    <filter>
+        <filter-name>setCharacterEncodingFilter</filter-name>
+        <filter-class>org.apache.catalina.filters.SetCharacterEncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+    </filter>
+
+    <!-- The mapping for the Set Character Encoding Filter -->
+    <filter-mapping>
+        <filter-name>setCharacterEncodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
 </web-app>

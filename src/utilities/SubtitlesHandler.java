@@ -74,6 +74,7 @@ public class SubtitlesHandler {
 
         Pattern pattern1 = Pattern.compile("^([0-9]){1,9}$", Pattern.MULTILINE);
         Pattern pattern2 = Pattern.compile("[a-z]", Pattern.CASE_INSENSITIVE);
+        Pattern pattern3 = Pattern.compile("[0-9]*( )?(\\.)", Pattern.CASE_INSENSITIVE);
         Matcher matcher1;
 
         for (int i = 0; i < rawContent.size(); i++) {
@@ -93,7 +94,7 @@ public class SubtitlesHandler {
                 String[] times = getTimes(line);
                 subtitle.setStartTime(times[0]);
                 subtitle.setEndTime(times[1]);
-            } else if (pattern2.matcher(line).find() == true) { //Du texte (présence de lettres) => sauvegarde
+            } else if (pattern2.matcher(line).find() == true || pattern3.matcher(line).find() == true) { //Du texte (présence de lettres) => sauvegarde || date suivi d'un point
                 subtitle.setText(line);
             } else { //Si c'est la séparation entre deux blocs
                 subtitlesResult.add(subtitle);

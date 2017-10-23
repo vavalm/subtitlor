@@ -3,11 +3,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8"/>
+    <meta charset="UTF-8">
     <title>Editer les sous-titres</title>
+    <meta name="description" content="A description of your website">
+    <link href="<c:url value="/css/style.css"/> " rel="stylesheet" type="text/css">
 </head>
 <body>
-<h1>
+<h1 style="text-align: center">
     <c:out value="${pageTitle}" default="Bonjour"/>
 </h1>
 <h2>

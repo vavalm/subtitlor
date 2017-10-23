@@ -125,8 +125,6 @@ public class SubFilesDaoSql implements SubFilesDao {
                 preparedStatement.setString(6, endTime);
 
                 preparedStatement.executeUpdate();
-                System.out.println("Sous-titre, id : " + subtitle.getNumber() + " Texte :"
-                + subtitle.getText());
             }
 
 
